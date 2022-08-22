@@ -1,0 +1,14 @@
+{
+   "name": "hackerrank/problemsolvings",
+   "description": "Problem Solvings",
+   "type": "project",
+   "authors": [
+      {
+         "name": "ltfide",
+         "email": "lutfidendians@gmail.com"
+      }
+   ],
+   "require-dev": {
+      "phpunit/phpunit": "^9"
+   }
+}
