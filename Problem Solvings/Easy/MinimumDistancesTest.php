@@ -1,27 +1,31 @@
-<?php 
+<?php
+
+use PHPUnit\Framework\TestCase;
 
 class MinimumDistances
 {
-   static function minimumDistances(array $arr)
+   static function minimumDistances(array $a)
    {
-      $newArray = array_diff($arr, $arr);
-      return $newArray;
+      $nums = [];
+      $min = -1;
+      for($i=0;$i<sizeof($a);$i++){
+         $nums[$a[$i]] [] = $i;
+         if(sizeof($nums[$a[$i]]) == 2) {
+               $cMin = abs($nums[$a[$i]][0] - $nums[$a[$i]][1]);
+               if($cMin < $min || $min == -1){
+                  $min = $cMin;
+               }
+         }
+      }
+      return $min;
    }
 }
 
-// print_r(MinimumDistances::minimumDistances([7,1,3,4,1,7]));
-$arr1 = [7,1,3,4,1,7];
-
-function sum($carry, $item) {
-   $carry += $item;
-   return $carry;
+class MinimumDistancesTest extends TestCase
+{
+   public function test_minimum_distances()
+   {
+      $this->assertEquals(2, MinimumDistances::minimumDistances([3,2,1,2,3]));
+      $this->assertEquals(3, MinimumDistances::minimumDistances([7,1,3,4,1,7]));
+   }
 }
-
-print_r(array_reduce($arr1, function ($a, $item) {
-   $a *= $item;
-   return $a;
-}, 1));
-
-// print_r(array_unique($arr1));
-
-print_r(array_key_exists(7, $arr1));
